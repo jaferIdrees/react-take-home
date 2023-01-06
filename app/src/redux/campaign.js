@@ -1,3 +1,5 @@
+import GetCampaigns from "../API/get_campaigns";
+
 const RETRIEVE_MISSIONS = 'RETRIEVE_MISSIONS';
 const ERROR = 'ERROR';
 
@@ -8,8 +10,8 @@ export default function reducer(state = initialState, action = {}) {
     switch (type) {
         case RETRIEVE_MISSIONS:
             {
-                const newState = [];
-                newState = payload;
+                let newState = [];
+                newState = [...payload];
                 return newState;
             }
             default: return state;
