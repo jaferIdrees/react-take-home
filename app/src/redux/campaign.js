@@ -11,7 +11,7 @@ export default function reducer(state = initialState, action = {}) {
         case RETRIEVE_MISSIONS:
             {
                 let newState = [];
-                newState = [...payload];
+                newState = payload;
                 return newState;
             }
             default: return state;

@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "clear-cra": "^1.1.22"
+    "clear-cra": "^1.1.22",
+    "redux-logger": "^3.0.6"
   }
 }
