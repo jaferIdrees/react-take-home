@@ -10,7 +10,7 @@ function App() {
 	return (<>
 		<h3>campaigns List</h3>
 		{ campaigns.map((campaign) => 
-		<p key={campaign.id}>{campaign.id}</p>
+		<p key={campaign.id}>{campaign.campaign_name}</p>
 		)}
     </>
 	);
