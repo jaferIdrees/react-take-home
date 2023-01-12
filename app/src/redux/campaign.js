@@ -1,14 +1,14 @@
+import {  createAsyncThunk } from '@reduxjs/toolkit';
 import GetCampaigns from "../API/get_campaigns";
 
 const RETRIEVE_MISSIONS = 'RETRIEVE_MISSIONS';
-const ERROR = 'ERROR';
 
-const initialState = {};
+const initialState = {campaigns: []};
 
 export default function reducer(state = initialState, action = {}) {
     const { type, payload } = action;
     switch (type) {
-        case RETRIEVE_MISSIONS:
+        case "RETRIEVE_MISSIONS/fulfilled":
             {
                 let newState = [];
                 newState = payload;
@@ -18,18 +18,17 @@ export default function reducer(state = initialState, action = {}) {
     }
 }
 
-export const retrieveCampaigns = () => async (dispatch) => {
+export const retrieveCampaigns = createAsyncThunk(
+  RETRIEVE_MISSIONS,
+async () => {
     try {
       const response = await GetCampaigns();
-      dispatch({
-        type: RETRIEVE_MISSIONS,
-        payload: response.data,
-      });
+      
+      return response.data;
     } catch (err) {
-      dispatch({
-        type: ERROR,
-        payload: { err },
-      });
+      
+       return err;
+      
     }
-  };
+  });
   

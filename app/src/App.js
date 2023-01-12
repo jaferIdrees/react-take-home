@@ -3,13 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { retrieveCampaigns } from "./redux/campaign";
 
 function App() {
-	const campaigns = useSelector((state) => state.campaignsReducer)
+	const campaigns = useSelector((state) => state.campaigns)
 	const dispatch = useDispatch();
-	dispatch(retrieveCampaigns());
-	console.log(campaigns)
+
+	if (campaigns.length ===0)dispatch(retrieveCampaigns());
 	return (<>
-		<h3>Learn React</h3>
-		<p>{typeof campaigns}</p>
+		<h3>campaigns List</h3>
+		{ campaigns.map((campaign) => 
+		<p key={campaign.id}>{campaign.id}</p>
+		)}
     </>
 	);
 }
